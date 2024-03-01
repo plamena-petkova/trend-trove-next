@@ -7,6 +7,7 @@ export const metadata = {
     title: "Add product - Trend Trove"
 }
 
+
 async function addProduct(formData:FormData) {
     "use server"
 
