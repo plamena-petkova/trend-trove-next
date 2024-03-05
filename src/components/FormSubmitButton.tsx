@@ -1,26 +1,29 @@
-"use client"
+"use client";
 
 import { ComponentProps } from "react";
-import { useFormStatus} from "react-dom"
+import { useFormStatus } from "react-dom";
 
 type FormSubmitButtonProps = {
-    children:React.ReactNode,
-    className?: string,
-} & ComponentProps<"button">
+  children: React.ReactNode;
+  className?: string;
+} & ComponentProps<"button">;
 
-export default function FormSubmitButton(
-    {children, className, ...props}:FormSubmitButtonProps
-) {
+export default function FormSubmitButton({
+  children,
+  className,
+  ...props
+}: FormSubmitButtonProps) {
+  const { pending } = useFormStatus();
 
-    const { pending } = useFormStatus();
-
-    return (
-        
-        <button {...props} type="submit" disabled={pending} className={`btn btn-primary ${className}`}
-            
-        >
-            {pending === true && <span className="loading loading-spinner"/>}
-            {children}</button>
-    )
-    
+  return (
+    <button
+      {...props}
+      type="submit"
+      disabled={pending}
+      className={`btn btn-primary ${className}`}
+    >
+      {pending === true && <span className="loading loading-spinner" />}
+      {children}
+    </button>
+  );
 }
