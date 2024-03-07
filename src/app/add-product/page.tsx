@@ -27,6 +27,7 @@ async function addProduct(formData: FormData) {
     throw Error("Missinf required fields!");
   }
 
+ 
   await prisma.product.create({
     data: {
       name,
