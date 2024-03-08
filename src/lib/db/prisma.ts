@@ -24,4 +24,4 @@ export default prismaBase.$extends({
   },
 });
 
-if (process.env.NODE_ENV !== "production") globalThis.prisma = prisma;
+if (process.env.NODE_ENV !== "production") globalThis.prisma = prismaBase;
