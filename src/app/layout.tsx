@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body suppressHydrationWarning={true} className={inter.className}>
         <SessionProvider>
           <Navbar />
           <main className="p-4 max-w-7xl m-auto m-w-[300px]">{children}</main>

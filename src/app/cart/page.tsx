@@ -11,6 +11,8 @@ export const metadata = {
 export default async function CartPage() {
   const cart = await getCart();
 
+  console.log('Cart', cart);
+
   return (
     <div>
       <h1 className="text-3xl font-bold mb-6">Shopping Cart</h1>

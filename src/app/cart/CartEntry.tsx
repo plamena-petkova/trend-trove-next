@@ -4,7 +4,7 @@ import { CartItemWithProduct } from "@/lib/db/cart";
 import { formatPrice } from "@/lib/db/format";
 import Image from "next/image";
 import Link from "next/link";
-import { useTransition } from "react";
+import { useEffect, useTransition } from "react";
 
 interface CartEntryProps {
   cartItem: CartItemWithProduct;
@@ -25,6 +25,8 @@ export default function CartEntry({
       </option>
     );
   }
+
+
 
   return (
     <div className="">

@@ -14,13 +14,18 @@ export default async function incrementProductQuantity(productId: string) {
       data: { quantity: { increment: 1 } },
     });
   } else {
-    await prisma?.cartItem.create({
-      data: {
-        cartId: cart.id,
-        productId,
-        quantity: 1,
+    try {
+      await prisma?.cartItem.create({
+        data: {
+          cartId: cart.id,
+          productId,
+          quantity: 1,
+      }
+    })
+    } catch(err) {
+      throw new Error('Cannot create cartItem!')
     }
-  })
+    
   }
 
   revalidatePath(`/products/[id]`, 'page');
