@@ -25,7 +25,7 @@ async function addProduct(formData: FormData) {
   const price = Number(formData.get("price"));
 
   if (!name || !description || !imageUrl || !price) {
-    throw Error("Missinf required fields!");
+    throw Error("Missing required fields!");
   }
 
  
