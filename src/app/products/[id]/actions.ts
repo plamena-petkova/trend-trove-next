@@ -14,7 +14,6 @@ export default async function incrementProductQuantity(productId: string) {
       data: { quantity: { increment: 1 } },
     });
   } else {
-
     await prisma?.cartItem.create({
       data: {
         cartId: cart.id,
@@ -24,5 +23,5 @@ export default async function incrementProductQuantity(productId: string) {
   })
   }
 
-  revalidatePath(`/products/${productId}`);
+  revalidatePath(`/products/[id]`, 'page');
 }

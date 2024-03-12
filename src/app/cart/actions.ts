@@ -34,5 +34,5 @@ export default async function setProductQuantity(
     }
   }
 
-  revalidatePath("/cart");
+  revalidatePath("/cart", "page");
 }
