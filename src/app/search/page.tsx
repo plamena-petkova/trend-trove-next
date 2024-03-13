@@ -25,7 +25,6 @@ export default async function SearchPage({searchParams : {query}}: SearchPagePro
         orderBy:{id:"desc"}
     })
 
-    console.log('product', products);
     if(products?.length === 0) {
        return <div className="text-center">No products found</div>
     }
