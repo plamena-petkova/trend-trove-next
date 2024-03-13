@@ -9,23 +9,20 @@ export default async function incrementProductQuantity(productId: string) {
   const articleInCart = cart.items.find((item) => item.productId === productId);
 
   if (articleInCart) {
+    console.log('Article in cart', articleInCart)
     await prisma?.cartItem.update({
       where: { id: articleInCart.id },
       data: { quantity: { increment: 1 } },
     });
   } else {
-    try {
+    console.log('Article not in cart')
       await prisma?.cartItem.create({
         data: {
           cartId: cart.id,
           productId,
           quantity: 1,
       }
-    })
-    } catch(err) {
-      throw new Error('Cannot create cartItem!')
-    }
-    
+    });
   }
 
   revalidatePath(`/products/[id]`, 'page');

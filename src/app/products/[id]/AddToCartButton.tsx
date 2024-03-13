@@ -21,6 +21,8 @@ export default function AddToCartButton({productId, incrementProductQuantity}: A
                 setSuccess(false);
                 startTransitions(async () => {
                     await incrementProductQuantity(productId);
+                    console.log('ProductId', productId);
+                    console.log('success', success);
                     setSuccess(true);
                 })
                 }}>
