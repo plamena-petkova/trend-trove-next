@@ -9,13 +9,11 @@ export default async function incrementProductQuantity(productId: string) {
   const articleInCart = cart.items.find((item) => item.productId === productId);
 
   if (articleInCart) {
-    console.log('Article in cart', articleInCart)
     await prisma?.cartItem.update({
       where: { id: articleInCart.id },
       data: { quantity: { increment: 1 } },
     });
   } else {
-    console.log('Article not in cart')
       await prisma?.cartItem.create({
         data: {
           cartId: cart.id,
@@ -25,5 +23,5 @@ export default async function incrementProductQuantity(productId: string) {
     });
   }
 
-  revalidatePath(`/products/[id]`, 'page');
+  revalidatePath(`/products/[id]`, 'layout');
 }
