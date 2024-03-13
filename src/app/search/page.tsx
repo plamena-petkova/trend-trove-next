@@ -1,6 +1,5 @@
 import ProductCard from "@/components/ProductCard"
 import { Metadata } from "next"
-import { title } from "process"
 
 interface SearchPageProps{
     searchParams: {query:string} 
