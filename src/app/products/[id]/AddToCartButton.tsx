@@ -21,12 +21,15 @@ export default function AddToCartButton({productId, incrementProductQuantity}: A
                  console.log('ProductId onClick', productId);
                  console.log('success onClick', success);
                 setSuccess(false);
-                startTransitions(async () => {
-                    await incrementProductQuantity(productId);
-                    console.log('ProductId', productId);
-                    console.log('success', success);
-                    setSuccess(true);
-                })
+                    setTimeout(async () => {
+                        await incrementProductQuantity(productId);
+                        console.log('ProductId', productId);
+                        console.log('success', success);
+                        setSuccess(true);
+                    }, 3000)
+              
+                    
+              
                 }}>
                 Add to Cart
                 <svg
