@@ -18,18 +18,11 @@ export default function AddToCartButton({productId, incrementProductQuantity}: A
     return(
         <div className="flex items-center gap-2">
             <button className="btn btn-primary" onClick={()=>{
-                 console.log('ProductId onClick', productId);
-                 console.log('success onClick', success);
                 setSuccess(false);
-                    setTimeout(async () => {
+                    startTransitions(async () => {
                         await incrementProductQuantity(productId);
-                        console.log('ProductId', productId);
-                        console.log('success', success);
                         setSuccess(true);
-                    }, 3000)
-              
-                    
-              
+                    });
                 }}>
                 Add to Cart
                 <svg
