@@ -1,7 +1,8 @@
 import ProductCard from "@/components/ProductCard"
 import { Metadata } from "next"
 
-export const revlidate = true;
+export const runtime = 'nodejs'
+//export const revlidate = 0;
 export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 

@@ -7,7 +7,8 @@ import { cache } from "react";
 import AddToCartButton from "./AddToCartButton";
 import incrementProductQuantity from "./actions";
 
-export const revlidate = true;
+export const runtime = 'nodejs'
+//export const revlidate = 0;
 export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 

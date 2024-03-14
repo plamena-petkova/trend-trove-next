@@ -1,11 +1,8 @@
 "use server";
 
 import { createCart, getCart } from "@/lib/db/cart";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 
-export const revlidate = true;
-export const dynamic = 'force-dynamic';
-export const dynamicParams = true;
 
 export default async function incrementProductQuantity(productId: string) {
   const cart = (await getCart()) ?? (await createCart());
