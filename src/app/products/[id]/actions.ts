@@ -2,7 +2,8 @@
 
 import { createCart, getCart } from "@/lib/db/cart";
 import { revalidatePath, revalidateTag } from "next/cache";
-import { redirect } from "next/dist/server/api-utils";
+
+export const revlidate = true;
 
 export default async function incrementProductQuantity(productId: string) {
   const cart = (await getCart()) ?? (await createCart());
@@ -24,6 +25,6 @@ export default async function incrementProductQuantity(productId: string) {
     });
   }
 
-  revalidateTag('products');
+  revalidatePath('/products/[id]', 'layout');
 
 }
