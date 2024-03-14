@@ -7,6 +7,10 @@ import { cache } from "react";
 import AddToCartButton from "./AddToCartButton";
 import incrementProductQuantity from "./actions";
 
+export const revlidate = true;
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
+
 interface ProductPageProps {
   params: {
     id: string;

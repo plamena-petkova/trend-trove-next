@@ -1,6 +1,10 @@
 import ProductCard from "@/components/ProductCard"
 import { Metadata } from "next"
 
+export const revlidate = true;
+export const dynamic = 'force-dynamic';
+export const dynamicParams = true;
+
 interface SearchPageProps{
     searchParams: {query:string} 
 }
