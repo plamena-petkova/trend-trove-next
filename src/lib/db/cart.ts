@@ -35,7 +35,7 @@ export async function getCart(): Promise<ShoppingCart | null> {
   } else {
     const localCartId = cookies().get("localCartId")?.value;
     cart = localCartId
-      ? await prisma.cart.findUnique({
+      ? await prisma.cart?.findUnique({
           where: { id: localCartId },
           include: { items: { include: { product: true } } },
         })
