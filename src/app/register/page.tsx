@@ -2,8 +2,6 @@ import FormSubmitButton from "@/components/FormSubmitButton";
 import { prisma } from "@/lib/db/prisma";
 import { NextResponse } from "next/server";
 import * as bcrypt from "bcrypt";
-import { redirect } from "next/dist/server/api-utils";
-import { signIn } from "next-auth/react";
 
 async function register(formData: FormData) {
   "use server";
