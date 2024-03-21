@@ -12,7 +12,6 @@ import * as bcrypt from "bcrypt";
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma as PrismaClient) as Adapter,
   providers: [
-    /*
     CredentialsProvider({
         name:'Email',
         credentials:{
@@ -29,37 +28,51 @@ export const authOptions: NextAuthOptions = {
               email:credentials.email
             }
           });
-          console.log('User', user);
 
           if(!user) {
             return null;
           }
 
-          if(user) {
+          if(user && user.password) {
             const passwordMatch = await bcrypt.compare(credentials.password, user.password);
 
             if(!passwordMatch) {
               return null
             }
-
-       
           }
           return user;
         }
+
     }),
-    */
+
     GoogleProvider({
         clientId: env.GOOGLE_CLIENT_ID,
         clientSecret: env.GOOGLE_CLIENT_SECRET,
       }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
+  session:{
+    strategy:'jwt'
+  },
   callbacks: {
-    session({ session, user }) {
-      session.user.id = user.id;
+    async jwt({ token, user }) {
+      if (user) {
+        token.email = user.email;
+        token.name = user.name;
+        token.id = user.id
+      }
+      
+      return token;
+    },
+    async session({ session, user, token }) {
+        session.user.email = token.email;
+        session.user.id = token.id as string;
+
       return session;
     },
+    
   },
+
   events: {
     async signIn({ user }) {
       await mergeAnonymousCartIntoUserCart(user.id);
