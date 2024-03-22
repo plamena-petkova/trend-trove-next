@@ -2,10 +2,10 @@ import { redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { getCart } from "@/lib/db/cart";
-import ShoppingCartButton from "./ShoppingCartButton";
-import UserMenuButton from "./UserMenuButton";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/authOptions";
+import ShoppingCartButton from "./ShoppingCartButton";
+import UserMenuButton from "./UserMenuButton";
 
 async function searchProducts(formData: FormData) {
   "use server";
