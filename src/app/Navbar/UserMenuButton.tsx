@@ -44,8 +44,20 @@ export default function UserMenuButton({ session }: UserMenuButtonProps) {
         tabIndex={0}
         className="dropdown-content menu rounded-box menu-sm z-30 mt-3 w-52 bg-base-100 p-2 shadow"
       >
-        <li>{!user && <Link href={"/"}>Register</Link>}</li>
-        <li>{user && <Link href={"/add-product"}>Add products</Link>}</li>
+        <li>
+          {!user && (
+            <button>
+              <Link href={"/register"}>Register</Link>
+            </button>
+          )}
+        </li>
+        <li>
+          {user && (
+            <button>
+              <Link href={"/add-product"}>Add products</Link>
+            </button>
+          )}
+        </li>
         <li>
           {user ? (
             <button onClick={() => signOut({ callbackUrl: "/" })}>
@@ -55,7 +67,6 @@ export default function UserMenuButton({ session }: UserMenuButtonProps) {
             <button onClick={() => signIn()}>Sign In</button>
           )}
         </li>
-      
       </ul>
     </div>
   );
